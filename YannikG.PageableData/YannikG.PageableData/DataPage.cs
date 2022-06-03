@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace YannikG.PagableData
+namespace YannikG.PageableData
 {
     public class DataPage<T> : IDataPage<T>
     {

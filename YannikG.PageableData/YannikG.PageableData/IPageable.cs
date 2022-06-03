@@ -1,5 +1,5 @@
 ﻿using System;
-namespace YannikG.PagableData
+namespace YannikG.PageableData
 {
 	public interface IPageable
 	{

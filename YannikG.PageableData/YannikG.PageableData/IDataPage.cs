@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace YannikG.PagableData
+namespace YannikG.PageableData
 {
 	public interface IDataPage<T>
 	{
@@ -18,7 +18,7 @@ namespace YannikG.PagableData
         // Sorting
         bool IsSorted { get; }
         string SortByField { get; }
-        SortDirection SortDirection { get; }
+        SortDirectionEnum SortDirection { get; }
     }
 }
 
