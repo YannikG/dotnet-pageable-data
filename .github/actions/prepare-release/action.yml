@@ -1,0 +1,51 @@
+name: 'Prepare release'
+description: |
+  Calculates the new semantic version for the release and tags the commit history with the new version
+  Stages the new Release Note contents for future steps
+inputs:
+  last-tagged-version:
+    description: 'last tagged version'
+    required: true
+  pr-title:
+    description: 'pull request title'
+    required: true  
+  pr-body:
+    description: 'pull request body'
+    required: true
+outputs:
+  new-version:
+    description: "New semantic version"
+    value: ${{ steps.finalise-release.outputs.new-version }}
+  tag-name:
+    description: "Release tag name"
+    value: ${{ steps.finalise-release.outputs.tag-name }}
+runs:
+  using: "composite"
+  steps:
+    - id: finalise-release
+      run: |
+        SEMVER_TOOL_VERSION=3.2.0
+        
+        if [[ ! -d "/tmp/semver-tool-$SEMVER_TOOL_VERSION" ]] ; then
+          pushd /tmp
+          curl -LO "https://github.com/fsaintjacques/semver-tool/archive/refs/tags/$SEMVER_TOOL_VERSION.zip"
+          unzip $SEMVER_TOOL_VERSION.zip
+          popd
+        fi
+
+        ## Extract the sem ver bump from the PR body - default to patch bump if no bump message found
+        BUMP=`echo -ne "${{ inputs.pr-body }}" | perl -nE'say/bump:\s*(major|minor|patch)/' | tr -d '\r\n'` && [ -z $BUMP ] && BUMP=patch
+        
+        ## Use the 3rd party tool (semver-tool) to deduce the new sem version
+        NEW_VERSION=`/tmp/semver-tool-$SEMVER_TOOL_VERSION/src/semver bump $BUMP ${{ inputs.last-tagged-version }}`
+        
+        ## Prepare release note (extracted from PR title and body) - store in temp file
+        echo "### ${{ inputs.pr-title }}" >> /tmp/note.md
+        echo "${{ inputs.pr-body }}" | sed -Ee 's/bump:\s*(major|minor|patch)//g' >> /tmp/note.md
+
+        ## Tag the release and push tag to remote
+        TAG_NAME=v$NEW_VERSION && git tag $TAG_NAME && git push -f origin $TAG_NAME
+
+        echo "::set-output name=new-version::$NEW_VERSION"
+        echo "::set-output name=tag-name::$TAG_NAME"
+      shell: bash

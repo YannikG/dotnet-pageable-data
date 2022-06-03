@@ -1,0 +1,23 @@
+name: 'Set Build Variables'
+description: 'Extracts and sets build variables'
+outputs:
+  last-tagged-version:
+    description: "The last version produced by the pipeline"
+    value: ${{ steps.get-last-tagged-version.outputs.last-tagged-version }}
+  branch-name:
+    description: "The branch name of the build run"
+    value: ${{ steps.get-branch-name.outputs.branch-name }}
+runs:
+  using: "composite"
+  steps:
+    - id: get-last-tagged-version 
+      run: |
+        ## get the last tagged version from the tag history of the current branch - if none is found default to version '0.0.0'
+        LAST_TAGGED_VERSION=`git tag --sort=-committerdate 'v*' --merged | head -n 1 | sed -Ee 's/v//g'` && [ -z $LAST_TAGGED_VERSION ] && LAST_TAGGED_VERSION=0.0.0
+        echo "::set-output name=last-tagged-version::$LAST_TAGGED_VERSION"
+      shell: bash
+    - id: get-branch-name
+      run: |
+        BRANCH_NAME=`echo ${GITHUB_REF##*/} | sed -Ee 's/[_ ]/-/g'`
+        echo "::set-output name=branch-name::$BRANCH_NAME"
+      shell: bash
