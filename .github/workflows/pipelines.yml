@@ -12,10 +12,10 @@ env:
   DOTNET_CLI_TELEMETRY_OPTOUT: true
   
   # Project name to pack and publish
-  PROJECT_NAME: {YOUR_PROJECT_NAME}
+  PROJECT_NAME: YannikG.PageableData
   
   # Extra varibale to target test project
-  TEST_PROJECT_NAME: {YOUR_TEST_PROJECT_NAME}
+  TEST_PROJECT_NAME: YannikG.PageableData.Tests
   
   # Github auth token
   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -25,7 +25,7 @@ env:
   NUGET_PREVIEW_FEED_PUBLISH_KEY: ${{ secrets.NUGET_PREVIEW_FEED_PUBLISH_KEY }}
 
   # Release NuGet Feed settings
-  NUGET_FEED: {YOUR_NUGET_RELEASE_FEED}
+  NUGET_FEED: nuget.org
   NUGET_KEY: ${{ secrets.NUGET_ORG_PUBLISH_API_KEY }}
 jobs:
   build:
@@ -55,23 +55,23 @@ jobs:
         with:
           name: nupkg
           path: ./src/${{ env.PROJECT_NAME }}/bin/Release/*.nupkg
-  branch_preview:
-    needs: build
-    if: github.event_name == 'push' && github.ref != 'refs/heads/master'
-    runs-on: ubuntu-latest
-    steps:
-      - name: Download Artifact
-        uses: actions/download-artifact@v1
-        with:
-          name: nupkg
-      - name: Setup publish token  
-        uses: actions/setup-dotnet@v1
-        with:
-          source-url: ${{ env.NUGET_PREVIEW_FEED }}
-        env:
-          NUGET_AUTH_TOKEN: ${{ env.NUGET_PREVIEW_FEED_PUBLISH_KEY }}
-      - name: Publish the package to Nuget preview feed
-        run: dotnet nuget push ./nupkg/*.nupkg --source ${{ env.NUGET_PREVIEW_FEED }} --api-key AzureArtifact
+  # branch_preview:
+  #   needs: build
+  #   if: github.event_name == 'push' && github.ref != 'refs/heads/master'
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #     - name: Download Artifact
+  #       uses: actions/download-artifact@v1
+  #       with:
+  #         name: nupkg
+  #     - name: Setup publish token  
+  #       uses: actions/setup-dotnet@v1
+  #       with:
+  #         source-url: ${{ env.NUGET_PREVIEW_FEED }}
+  #       env:
+  #         NUGET_AUTH_TOKEN: ${{ env.NUGET_PREVIEW_FEED_PUBLISH_KEY }}
+  #     - name: Publish the package to Nuget preview feed
+  #       run: dotnet nuget push ./nupkg/*.nupkg --source ${{ env.NUGET_PREVIEW_FEED }} --api-key AzureArtifact
   deploy:
     needs: build
     if: github.event_name == 'push' && github.ref == 'refs/heads/master'

@@ -1,9 +1,23 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
+    <!-- General -->
     <AssemblyName>YannikG.PageableData</AssemblyName>
     <TargetFramework>netstandard2.1</TargetFramework>
-    <Description>{YOUR_DESCRIPTION_GOES_HERE}</Description>
+    <Description>A small project that helps you work with pageable data in your dotnet application.</Description>
+    <Authors>Yannik Gartmann</Authors>
+    <NeutralLanguage>en</NeutralLanguage>
+    
+    <!-- NuGet settings -->
+    <PackageId>YannikG.PageableData</PackageId>
+		<PackageTags>pageable,paging,data</PackageTags>
+		<PackageLicenseExpression>MIT</PackageLicenseExpression>
+		<PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
+		<PackageProjectUrl>https://github.com/YannikG/dotnet-pageable-data</PackageProjectUrl>
+		<IsPackable>true</IsPackable>
+		<RepositoryType>git</RepositoryType>
+
+    <RepositoryUrl>https://github.com/YannikG/dotnet-pageable-data</RepositoryUrl>
   </PropertyGroup>
 
 </Project>
