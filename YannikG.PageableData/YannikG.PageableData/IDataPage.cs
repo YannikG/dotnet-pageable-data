@@ -6,7 +6,7 @@ namespace YannikG.PageableData
 	public interface IDataPage<T>
 	{
         // Content
-        int TotalItems { get; }
+        long TotalItems { get; }
         int TotalItemsOnPage { get; }
         ICollection<T> Content { get; }
 

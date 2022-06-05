@@ -6,7 +6,7 @@ namespace YannikG.PageableData
     public class DataPage<T> : IDataPage<T>
     {
         private ICollection<T> _content;
-        private int _count;
+        private long _count;
 
         private IPageable _pageable;
 
@@ -17,7 +17,7 @@ namespace YannikG.PageableData
             this._pageable = pageable;
         }
 
-        public int TotalItems => this._count;
+        public long TotalItems => this._count;
         public int TotalItemsOnPage => this._content.Count;
 
         public ICollection<T> Content => this._content;
