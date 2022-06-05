@@ -10,7 +10,7 @@ namespace YannikG.PageableData
 
         private IPageable _pageable;
 
-        public DataPage(ICollection<T> content, int count, IPageable pageable)
+        public DataPage(ICollection<T> content, long count, IPageable pageable)
         {
             this._content = content;
             this._count = count;
@@ -22,7 +22,7 @@ namespace YannikG.PageableData
 
         public ICollection<T> Content => this._content;
 
-        public int TotalPages => Convert.ToInt32(Math.Ceiling(Convert.ToDecimal(this._count / this._pageable.PageSize)));
+        public int TotalPages => Convert.ToInt32(Math.Ceiling((decimal)this._count / (decimal)this._pageable.PageSize));
 
         public int PageSize => this._pageable.PageSize;
 
