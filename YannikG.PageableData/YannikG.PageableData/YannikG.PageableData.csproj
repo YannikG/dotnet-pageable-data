@@ -16,6 +16,7 @@
 		<PackageProjectUrl>https://github.com/YannikG/dotnet-pageable-data</PackageProjectUrl>
 		<IsPackable>true</IsPackable>
 		<RepositoryType>git</RepositoryType>
+        <Version>1.0.1</Version>
 
     <RepositoryUrl>https://github.com/YannikG/dotnet-pageable-data</RepositoryUrl>
   </PropertyGroup>
