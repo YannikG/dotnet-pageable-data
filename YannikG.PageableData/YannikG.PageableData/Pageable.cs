@@ -1,5 +1,4 @@
-﻿using System;
-namespace YannikG.PageableData
+﻿namespace YannikG.PageableData
 {
     public class Pageable : IPageable
     {
@@ -7,22 +6,22 @@ namespace YannikG.PageableData
         private int _currentPage = 0;
         private string _searchByField = null;
 
-        public int PageSize
+        public virtual int PageSize
         {
             get => this._pageSize;
             set => _pageSize = value;
         }
-        public int CurrentPage
+        public virtual int CurrentPage
         {
             get => this._currentPage;
             set => this._currentPage = value;
         }
 
-        public int Skip { get => this._currentPage * this._pageSize; }
-        public int Take { get => this._pageSize; }
+        public virtual int Skip { get => this._currentPage * this._pageSize; }
+        public virtual int Take { get => this._pageSize; }
 
-        public bool IsSorted { get; set; }
-        public string SortByField
+        public virtual bool IsSorted { get; set; }
+        public virtual string SortByField
         {
             get
             {
@@ -38,7 +37,7 @@ namespace YannikG.PageableData
             }
         }
 
-        public SortDirectionEnum SortDirection { get; set; } = SortDirectionEnum.Ascending;
+        public virtual SortDirectionEnum SortDirection { get; set; } = SortDirectionEnum.Ascending;
     }
 }
 
