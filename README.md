@@ -2,7 +2,7 @@
 A small package that helps you work with pageable data in your dotnet application.
 
 ## 💡 Motivation
-This package was created when switching back from using Java Spring Boot in my daily work. I missed the easy-to-use paging and built my own. This package is lightweight and easy to into this package.
+This package was created when switching back from using Java Spring Boot in my daily work. I missed the easy-to-use paging and built my own. This package is lightweight and easy to extend.
 
 # Get started
 ## Quick Links
