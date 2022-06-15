@@ -1,14 +1,14 @@
 # YannikG.PageableData
 A lightweight package that helps you with pageable data in your dotnet application.
 
-## 💡 Motivation
+# 💡 Motivation
 This package was created when switching back from using Java Spring Boot in my daily work. I missed the easy-to-use paging and built my own. This package is lightweight and easy to extend.
 
-# Get started
-## Quick Links
+# Quick Links
 - [Project on Nuget.org](https://www.nuget.org/packages/YannikG.PageableData/)
 - [Spring Boot implementation](https://www.baeldung.com/spring-data-jpa-pagination-sorting)
 
+# Get started
 ## Installation
 `dotnet add package YannikG.PageableData`
 
