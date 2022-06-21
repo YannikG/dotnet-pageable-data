@@ -15,7 +15,7 @@ This package was created when switching back from using Java Spring Boot in my d
 Add using in your project `using YannikG.PageableData`
 
 ## How to use it
-The `IPageable` interfaces gives you a toolbox of useful and standardized properties. Within your API request you specify what page you want and how big it should be (numbers of maximum result). Additionally, you have the possibility to send a filed name, that should be sorted along with the sorting direction. The sorting is done in your data access logic. This package doesn’t do anything with your database queries. It just provides you an easy to use toolbox.
+The `IPageable` interfaces gives you a toolbox of useful and standardized properties. Within your API request you specify what page you want and how big it should be (numbers of maximum result). Additionally, you have the possibility to send a field name, that should be sorted along with the sorting direction. The sorting is done in your data access logic. This package doesn’t do anything with your database queries. It just provides you an easy to use toolbox.
 
 When querying your data, `IPageable` provides you with useful helpers like a pre calculated `Skip` and `Take`, so you don’t have to do it on your own 🎉.
 To transport data back through your logic and return it back to the requester, you can use `IDataPage`. `IDataPage` describes a class that can hold a `IPageable` along the data.
