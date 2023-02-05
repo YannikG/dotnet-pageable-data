@@ -7,6 +7,7 @@ This package was created when switching back from using Java Spring Boot in my d
 # Quick Links
 - [Project on Nuget.org](https://www.nuget.org/packages/YannikG.PageableData/)
 - [Spring Boot implementation](https://www.baeldung.com/spring-data-jpa-pagination-sorting)
+- Read [Master the Art of Pagination in .NET 6.0 with YannikG.PageableData: An Easy Guide](https://medium.com/@gartmann-yannik/learn-how-to-easily-implement-pagination-in-net-6-0-with-yannikg-pageabledata-d0e13316068e) on Medium.com
 
 # Get started
 ## Installation
