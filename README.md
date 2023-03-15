@@ -67,5 +67,8 @@ Looks great, doesn’t it? 😎
 ### Provided Example Application
 Within the source you will find an example implementation that should give you an idea how the package should be used. If you have any question regarding the package or example, you can create an issue.
 
-## 🤘 Contribute
+# 🤘 Contribute
 Feel free to make changes and add a pull request.
+
+# Support my work
+[![ko-fi](https://ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/T6T7JEP5Q)
